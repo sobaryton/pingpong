@@ -8,10 +8,11 @@ class App extends Component {
 		super(props);
 		this.state={
 			players: ['Nicolas', 'Solene', 'Loic','Helen'],
-			game:[{name1: 'Nicolas',score1:0,name2:'Solene',score2:0}]
+			game:[{name1: 'Nicolas',score1:0,name2:'Solene',score2:0,game:'ongoing',winner:''},{name1: 'Loic',score1:11,name2:'Helen',score2:4, game:'finished',winner:'Loic'}]
 		}
 
 	}
+
 
 
 	createTeams(player1,player2){
@@ -46,14 +47,30 @@ class App extends Component {
 		);
 	}
 
+	secondState(leftGame, leftWinner, rightGame, rightWinner) {
+		return (
+			<div>
+				<div className="player">
+					<p>{leftGame}</p>
+					<p>{leftWinner}</p>
+				</div>
+				<div className="player">
+					<p>{rightGame}</p>
+					<p>{rightWinner}</p>
+				</div>
+			</div>
+		);
+	}
+
   render() {
 
 	let playerTeam1 = this.createTeams('Solene', 'Nicolas');
-	let playerTeam2 = this.finalScreen(this.state.game[0].name1, this.state.game[0].score1, this.state.game[0].name2, this.state.game[0].score2);
-    return (
+	let playerTeam2 = this.finalScreen(this.state.game[1].name1, this.state.game[1].score1, this.state.game[1].name2, this.state.game[1].score2);
+    const second = this.secondState(playerTeam1, '', playerTeam2, 'Loic');
+
+	return (
       <div className="App">
-		  {playerTeam1}
-		  {playerTeam2}
+		  {second}
       </div>
     );
   }
