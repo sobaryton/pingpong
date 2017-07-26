@@ -34,16 +34,13 @@ class App extends Component {
 
 	finalScreen(player1,score1,player2,score2){
 		return(
-		<div>
-			<div className="player">
-				<p>{player1}</p>
-				<p>{score1}</p>
-			</div>
-			<div className="player">
-				<p>{player2}</p>
-				<p>{score2}</p>
-			</div>
-		</div>
+		      <ul>
+		      	<li className="game game-top winner">{player1} <span>{score1} </span></li>
+				  <li>&nbsp;</li>
+				  <li className="game game-bottom">
+				  {player2} <span> {score2} </span>
+				  </li>
+		      </ul>
 		);
 	}
 
